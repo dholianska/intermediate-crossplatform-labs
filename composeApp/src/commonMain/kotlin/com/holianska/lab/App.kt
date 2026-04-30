@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.Font
 import com.holianska.lab.ui.theme.AppTheme
+import co.touchlab.kermit.Logger
 
 import lab.composeapp.generated.resources.Res
 import lab.composeapp.generated.resources.compose_multiplatform
@@ -37,7 +38,10 @@ fun App() {
                 .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Button(onClick = { showContent = !showContent }) {
+            Button(onClick = {
+                showContent = !showContent
+                Logger.i { "Logger test." }
+            }) {
                 Text("Click me!")
             }
             AnimatedVisibility(showContent) {
@@ -48,7 +52,7 @@ fun App() {
                 ) {
                     Image(painterResource(Res.drawable.compose_multiplatform), null)
                     Text(
-                        text = "Hi World",
+                        text = "Hi, World",
                         style = TextStyle(
                             fontSize = 28.sp,
                             fontFamily = FontFamily(
