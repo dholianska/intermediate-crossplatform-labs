@@ -1,9 +1,11 @@
 package com.holianska.lab
 
+import com.holianska.lab.data.about.Platform
+
 class Greeting {
-    private val platform = getPlatform()
+    private val platform = Platform()
 
     fun greet(): String {
-        return "Hello, ${platform.name}!"
+        return "Hello, ${platform.osName}!"
     }
 }
