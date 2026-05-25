@@ -1,5 +1,7 @@
 package com.holianska.lab
 
+import kotlin.collections.iterator
+
 fun parseBrowserName(ua: String): String = when {
     ua.contains("Firefox", ignoreCase = true)  -> "Firefox"
     ua.contains("Edg/", ignoreCase = true)     -> "Edge"

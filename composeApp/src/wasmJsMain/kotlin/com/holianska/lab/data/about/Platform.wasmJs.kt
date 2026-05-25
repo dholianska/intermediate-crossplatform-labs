@@ -8,7 +8,7 @@ import com.holianska.lab.parseLayoutEngine
 import com.holianska.lab.parseOsName
 import com.holianska.lab.parseOsVersion
 
-actual open class Platform actual constructor() {
+actual class Platform actual constructor() {
     actual val osName: String
         get() = parseBrowserName(window.navigator.userAgent)
     actual val osVersion: String

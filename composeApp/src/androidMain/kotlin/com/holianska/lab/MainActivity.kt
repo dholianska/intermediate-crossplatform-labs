@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            AppScaffold()
+            _root_ide_package_.com.holianska.lab.ui.root.AppScaffold()
         }
     }
 }
@@ -22,5 +22,5 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun AppAndroidPreview() {
-    AppScaffold()
+    _root_ide_package_.com.holianska.lab.ui.root.AppScaffold()
 }

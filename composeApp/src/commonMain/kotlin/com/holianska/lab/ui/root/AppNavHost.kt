@@ -15,17 +15,17 @@ fun AppNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Reminders.route,
+        startDestination = _root_ide_package_.com.holianska.lab.ui.root.Screen.Reminders.route,
         modifier = modifier,
     ) {
-        composable(Screen.Reminders.route) {
-            RemindersPage(
-                onAboutButtonClick = { navController.navigate(Screen.AboutDevice.route) }
+        composable(_root_ide_package_.com.holianska.lab.ui.root.Screen.Reminders.route) {
+            _root_ide_package_.com.holianska.lab.ui.reminders.RemindersPage(
+                onAboutButtonClick = { navController.navigate(_root_ide_package_.com.holianska.lab.ui.root.Screen.AboutDevice.route) }
             )
         }
 
-        composable(Screen.AboutDevice.route) {
-            AboutScreen(
+        composable(_root_ide_package_.com.holianska.lab.ui.root.Screen.AboutDevice.route) {
+            _root_ide_package_.com.holianska.lab.ui.about.AboutScreen(
                 onUpButtonClick = { navController.popBackStack() }
             )
         }

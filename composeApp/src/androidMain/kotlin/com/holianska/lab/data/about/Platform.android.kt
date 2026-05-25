@@ -3,6 +3,8 @@ package com.holianska.lab.data.about
 import android.content.res.Resources
 import android.os.Build
 import co.touchlab.kermit.Logger
+import com.holianska.lab.data.about.ScreenInfo
+import com.holianska.lab.data.about.deviceInfo
 import kotlin.math.round
 
 @Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")

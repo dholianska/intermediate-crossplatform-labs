@@ -13,9 +13,9 @@ import com.holianska.lab.ui.theme.AppTheme
 @Composable
 fun AppScaffold() {
     val navController = rememberNavController()
-    AppTheme {
+    _root_ide_package_.com.holianska.lab.ui.theme.AppTheme {
         Scaffold(contentWindowInsets = WindowInsets.ime) {
-            AppNavHost(
+            _root_ide_package_.com.holianska.lab.ui.root.AppNavHost(
                 navController = navController,
                 modifier = Modifier
                     .fillMaxSize()

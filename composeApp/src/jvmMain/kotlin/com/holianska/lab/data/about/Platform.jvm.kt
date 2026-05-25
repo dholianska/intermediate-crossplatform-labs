@@ -1,6 +1,8 @@
 package com.holianska.lab.data.about
 
 import co.touchlab.kermit.Logger
+import com.holianska.lab.data.about.ScreenInfo
+import com.holianska.lab.data.about.deviceInfo
 import java.awt.Toolkit
 
 @Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
@@ -15,7 +17,7 @@ actual open class Platform actual constructor() {
         get() = System.getProperty("os.arch") ?: "---"
 
     actual val screen: ScreenInfo
-        get() = ScreenInfo()
+        get() = _root_ide_package_.com.holianska.lab.data.about.ScreenInfo()
 
     actual fun logSystemInfo() {
         Logger.d(deviceInfo)

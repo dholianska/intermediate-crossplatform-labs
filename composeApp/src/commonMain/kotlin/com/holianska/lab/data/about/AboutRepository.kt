@@ -3,10 +3,11 @@ package com.holianska.lab.data.about
 import kotlin.math.max
 import kotlin.math.min
 
-internal class AboutRepository {
+internal class AboutRepository(
+    private val platform: com.holianska.lab.data.about.Platform
+) {
 
     fun getAbout(): MutableList<Pair<String, String>> {
-        val platform = Platform()
 
         val items = mutableListOf(
             Pair("Operating System", "${platform.osName} ${platform.osVersion}"),

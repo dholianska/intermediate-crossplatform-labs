@@ -20,8 +20,8 @@ fun RemindersPage(
     onAboutButtonClick: () -> Unit,
 ) {
     Column {
-        Toolbar(onAboutButtonClick = onAboutButtonClick)
-        ContentView()
+        _root_ide_package_.com.holianska.lab.ui.reminders.Toolbar(onAboutButtonClick = onAboutButtonClick)
+        _root_ide_package_.com.holianska.lab.ui.reminders.ContentView()
     }
 }
 
@@ -56,5 +56,5 @@ private fun ContentView() {
 @Preview(showBackground = true)
 @Composable
 private fun RemindersViewPreview() {
-    RemindersPage {}
+    _root_ide_package_.com.holianska.lab.ui.reminders.RemindersPage {}
 }

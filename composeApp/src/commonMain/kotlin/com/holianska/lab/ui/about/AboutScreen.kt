@@ -18,22 +18,19 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import org.koin.compose.viewmodel.koinViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
 internal fun AboutScreen(
-    viewModel: AboutViewModel = viewModel(
-        factory = aboutViewModelFactory,
-    ),
+    viewModel: com.holianska.lab.ui.about.AboutViewModel = koinViewModel(),
     onUpButtonClick: () -> Unit
 ) {
     Column {
-        Toolbar(onUpButtonClick = onUpButtonClick)
-        AboutContent(viewModel)
+        _root_ide_package_.com.holianska.lab.ui.about.Toolbar(onUpButtonClick = onUpButtonClick)
+        _root_ide_package_.com.holianska.lab.ui.about.AboutContent(viewModel)
     }
 }
 
@@ -56,14 +53,17 @@ private fun Toolbar(
 }
 
 @Composable
-private fun AboutContent(viewModel: AboutViewModel) {
+private fun AboutContent(viewModel: com.holianska.lab.ui.about.AboutViewModel) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
     ) {
         items(state) { row ->
-            RowView(title = row.first, subtitle = row.second)
+            _root_ide_package_.com.holianska.lab.ui.about.RowView(
+                title = row.first,
+                subtitle = row.second
+            )
         }
     }
 }
@@ -90,6 +90,6 @@ private fun RowView(
 @Preview(showBackground = true)
 @Composable
 private fun AboutPreview() {
-    AboutScreen {
+    _root_ide_package_.com.holianska.lab.ui.about.AboutScreen {
     }
 }
