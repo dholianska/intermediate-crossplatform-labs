@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -16,6 +17,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,12 +27,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
 internal fun AboutScreen(
-    viewModel: com.holianska.lab.ui.about.AboutViewModel = koinViewModel(),
+    viewModel: AboutViewModel = koinViewModel(),
     onUpButtonClick: () -> Unit
 ) {
     Column {
-        _root_ide_package_.com.holianska.lab.ui.about.Toolbar(onUpButtonClick = onUpButtonClick)
-        _root_ide_package_.com.holianska.lab.ui.about.AboutContent(viewModel)
+        Toolbar(onUpButtonClick = onUpButtonClick)
+        AboutContent(viewModel)
     }
 }
 
@@ -53,17 +55,25 @@ private fun Toolbar(
 }
 
 @Composable
-private fun AboutContent(viewModel: com.holianska.lab.ui.about.AboutViewModel) {
+private fun AboutContent(viewModel: AboutViewModel) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
     ) {
-        items(state) { row ->
-            _root_ide_package_.com.holianska.lab.ui.about.RowView(
-                title = row.first,
-                subtitle = row.second
-            )
+        items(state.platformInfo) { row ->
+            RowView(title = row.first, subtitle = row.second)
+        }
+        item {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth().padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Screen visited ${state.visitedCount} times."
+                )
+            }
         }
     }
 }
@@ -77,10 +87,12 @@ private fun RowView(
         Column(Modifier.padding(8.dp)) {
             Text(
                 text = title,
-                color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.bodySmall,
+                color = Color.Gray,
             )
             Text(
                 text = subtitle,
+                style = MaterialTheme.typography.bodyLarge,
             )
         }
         HorizontalDivider()
@@ -90,6 +102,6 @@ private fun RowView(
 @Preview(showBackground = true)
 @Composable
 private fun AboutPreview() {
-    _root_ide_package_.com.holianska.lab.ui.about.AboutScreen {
+    AboutScreen {
     }
 }
