@@ -15,15 +15,20 @@ import com.holianska.lab.data.common.preferences.AppPreferences
 import com.holianska.lab.data.common.preferences.Preferences
 import com.holianska.lab.ui.about.AboutViewModel
 import org.koin.plugin.module.dsl.single
+import org.koin.core.scope.Scope
+
 
 private fun createSettings() : Settings = Settings()
+
 val dataModule = module {
     single { create(::createSettings) } binds arrayOf(Settings::class, ObservableSettings::class)
     singleOf(::AppPreferences) bind Preferences::class
+
 }
+
 val appModule = module {
     includes(dataModule)
-    single<com.holianska.lab.data.about.Platform>()
-    single<com.holianska.lab.data.about.AboutRepository>()
-    viewModel<com.holianska.lab.ui.about.AboutViewModel>()
+    single<Platform>()
+    single<AboutRepository>()
+    viewModel<AboutViewModel>()
 }
