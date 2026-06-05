@@ -16,6 +16,8 @@ import com.holianska.lab.data.common.preferences.Preferences
 import com.holianska.lab.ui.about.AboutViewModel
 import org.koin.plugin.module.dsl.single
 import org.koin.core.scope.Scope
+import com.holianska.lab.data.reminders.RemindersRepository
+import com.holianska.lab.ui.reminders.ReminderViewModel
 
 
 private fun createSettings() : Settings = Settings()
@@ -31,4 +33,6 @@ val appModule = module {
     single<Platform>()
     single<AboutRepository>()
     viewModel<AboutViewModel>()
+    single<RemindersRepository>()
+    viewModel<ReminderViewModel>()
 }
